@@ -11,10 +11,10 @@ export function WebpackPnpExternals(options={}) {
         pnpApi = null;
     }
     return function() {
-        let [{ context, request }, callback] = arguments;
-        // support Webpack <= 4
-        if (arguments.length === 3) {
-            [context, request, callback] = arguments;
+        let [context, request, callback] = arguments;
+        // support Webpack 5
+        if (arguments.length === 2) {
+            [{ context, request }, callback] = arguments;
         }
         if(pnpApi == null)
             return callback();
